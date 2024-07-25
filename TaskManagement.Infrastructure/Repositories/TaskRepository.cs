@@ -37,9 +37,9 @@ namespace TaskManagement.Infrastructure.Repositories
             return task.TaskId;
         }
 
-        public async Task DeleteTaskAsync(string title, DateTime startTime)
+        public async Task DeleteTaskAsync(string title)
         {
-            var task = await _context.Tasks.SingleOrDefaultAsync(t => t.Title == title && t.StartDate == startTime);
+            var task = await _context.Tasks.SingleOrDefaultAsync(t => t.Title == title);
             if (task != null)
             {
                 _context.Remove(task);

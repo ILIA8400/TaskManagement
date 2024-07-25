@@ -43,7 +43,7 @@
                             <td>@task.EndDate</td>
                             <td>Pending</td>
                             <td>
-                                <button type="submit" asp-action="Delete" asp-route-title="@task.Title" asp-route-startTask="@task.StartDate" ; class="delete-btn">Delete</button>
+                                <a style="color:red;text-decoration:none;" asp-controller="Home" asp-action="Delete" asp-route-title="@task.Title" class="delete-btn">Delete</a>
                             </td>
                         </tr>
                     }

@@ -57,16 +57,19 @@ namespace TaskManagement.Web.Controllers
             
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(string title,DateTime startTask)
+        public async Task<IActionResult> Delete([FromQuery]string title)
         {
             var command = new DeleteTaskCommand();
             command.Title = title;
-            command.StartTime = startTask;
 
-            var result = await _mediator.Send(command);
+            
 
-            return View(viewName: "Index",model: result);
+            var vm = new IndexVM
+            {
+                Tasks = await _mediator.Send(command)
+            };
+
+            return View(viewName: "Index",model: vm);
         }
 
     }

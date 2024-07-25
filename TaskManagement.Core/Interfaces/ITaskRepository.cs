@@ -13,6 +13,6 @@ namespace TaskManagement.Core.Interfaces
         Task<TaskDomain> GetTaskByIdAsync(int id);
         Task<int> AddTaskAsync(TaskDomain task);
         Task UpdateTaskAsync(TaskDomain task);
-        Task DeleteTaskAsync(string title,DateTime startTime);
+        Task DeleteTaskAsync(string title);
     }
 }

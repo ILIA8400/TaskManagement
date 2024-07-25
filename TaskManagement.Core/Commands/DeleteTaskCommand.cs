@@ -11,6 +11,5 @@ namespace TaskManagement.Core.Commands
     public class DeleteTaskCommand : IRequest<List<TaskDomain>>
     {
         public string Title { get; set; }
-        public DateTime StartTime { get; set; }
     }
 }

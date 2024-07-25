@@ -20,7 +20,7 @@ namespace TaskManagement.Core.Handlers
         }
         public async Task<List<TaskDomain>> Handle(DeleteTaskCommand request, CancellationToken cancellationToken)
         {
-            await _repository.DeleteTaskAsync(request.Title,request.StartTime);
+            await _repository.DeleteTaskAsync(request.Title);
             return await _repository.GetTasksAsync();
         }
     }
