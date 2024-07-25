@@ -10,10 +10,10 @@
     <div class="task-form">
         <h2>Add New Task</h2>
         <form asp-action="Create" method="post" id="taskForm">
-            <input asp-for="ViewModel.Title" ; type="text" id="taskTitle" placeholder="Task Title" required maxlength="55">
-            <textarea asp-for="ViewModel.Describtion" ; id="taskDescription" placeholder="Task Description" required maxlength="255"></textarea>
-            <input asp-for="ViewModel.StartDate" ; type="date" id="startDate" placeholder="Start Date" required>
-            <input asp-for="ViewModel.EndtDate" ; type="date" id="endDate" placeholder="End Date" required>
+            <input asp-for="ViewModel.Title" type="text" id="taskTitle" placeholder="Task Title" required maxlength="55">
+            <textarea asp-for="ViewModel.Describtion" id="taskDescription" placeholder="Task Description" required maxlength="255"></textarea>
+            <input asp-for="ViewModel.StartDate" type="date" id="startDate" placeholder="Start Date" required>
+            <input asp-for="ViewModel.EndtDate" type="date" id="endDate" placeholder="End Date" required>
             <button type="submit">Add Task</button>
         </form>
     </div>
@@ -32,7 +32,6 @@
                 </tr>
             </thead>
             <tbody id="taskTableBody">
-                <!-- Tasks will be dynamically added here -->
                 @foreach (var task in Model.Tasks)
                 {
                     <tr>
@@ -51,4 +50,3 @@
         </table>
     </div>
 </div>
-

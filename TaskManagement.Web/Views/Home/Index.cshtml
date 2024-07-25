@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Task Management";
 }
-@using TaskManagement.Core.ViewModels;
+@using TaskManagement.Core.ViewModels
 @model IndexVM
 
 <div class="container">
@@ -10,10 +10,10 @@
     <div class="task-form">
         <h2>Add New Task</h2>
         <form asp-action="Create" method="post" id="taskForm">
-            <input asp-for="ViewModel.Title"; type="text" id="taskTitle" placeholder="Task Title" required maxlength="55">
-            <textarea asp-for="ViewModel.Describtion" ; id="taskDescription" placeholder="Task Description" required maxlength="255"></textarea>
-            <input asp-for="ViewModel.StartDate" ; type="date" id="startDate" placeholder="Start Date" required>
-            <input asp-for="ViewModel.EndtDate" ; type="date" id="endDate" placeholder="End Date" required>
+            <input asp-for="ViewModel.Title" type="text" id="taskTitle" placeholder="Task Title" required maxlength="55">
+            <textarea asp-for="ViewModel.Describtion" id="taskDescription" placeholder="Task Description" required maxlength="255"></textarea>
+            <input asp-for="ViewModel.StartDate" type="date" id="startDate" placeholder="Start Date" required>
+            <input asp-for="ViewModel.EndtDate" type="date" id="endDate" placeholder="End Date" required>
             <button type="submit">Add Task</button>
         </form>
     </div>
@@ -32,8 +32,7 @@
                 </tr>
             </thead>
             <tbody id="taskTableBody">
-                <!-- Tasks will be dynamically added here -->
-                @foreach(var task in Model.Tasks)
+                @foreach (var task in Model.Tasks)
                 {
                     <tr>
                         <td>@task.Title</td>
@@ -42,8 +41,8 @@
                         <td>@task.EndDate</td>
                         <td>Pending</td>
                         <td>
-                            <button asp-action="Edit" class="edit-btn">Edit</button>
-                            <button asp-action="Delete" class="delete-btn">Delete</button>
+                            <button asp-action="Edit"  class="edit-btn">Edit</button>
+                            <button asp-action="Delete"  class="delete-btn">Delete</button>
                         </td>
                     </tr>
                 }
@@ -51,4 +50,3 @@
         </table>
     </div>
 </div>
-
