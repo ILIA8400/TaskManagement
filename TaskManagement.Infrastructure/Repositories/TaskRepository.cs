@@ -37,12 +37,15 @@ namespace TaskManagement.Infrastructure.Repositories
             return task.TaskId;
         }
 
-        public async Task DeleteTaskAsync(int id)
+        public async Task DeleteTaskAsync(string title, DateTime startTime)
         {
-            var task = new TaskEntity {  TaskId = id };
-
-            _context.Remove(task);
-            await _context.SaveChangesAsync(); 
+            var task = await _context.Tasks.SingleOrDefaultAsync(t => t.Title == title && t.StartDate == startTime);
+            if (task != null)
+            {
+                _context.Remove(task);
+                await _context.SaveChangesAsync();
+            }
+            else throw new Exception("Not found");
         }
 
         public async Task<TaskDomain> GetTaskByIdAsync(int id)

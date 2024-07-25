@@ -9,7 +9,7 @@ namespace TaskManagement.Core.ViewModels
 {
     public class IndexVM
     {
-        public List<TaskDomain> Tasks { get; set; }
+        public List<TaskDomain>? Tasks { get; set; }
         public CreateTaskVM? ViewModel { get; set; }
     }
 }

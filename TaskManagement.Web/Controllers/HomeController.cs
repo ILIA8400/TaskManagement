@@ -33,16 +33,16 @@ namespace TaskManagement.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm]CreateTaskVM model)
+        public async Task<IActionResult> Create([FromForm]IndexVM model)
         {
             if (ModelState.IsValid)
             {
                 var command = new CreateTaskCommand
                 {
-                    Title = model.Title,
-                    Describtion = model.Describtion,
-                    StartDate = model.StartDate,
-                    EndtDate = model.EndtDate
+                    Title = model.ViewModel.Title,
+                    Describtion = model.ViewModel.Describtion,
+                    StartDate = model.ViewModel.StartDate,
+                    EndtDate = model.ViewModel.EndtDate
                 };
 
                 var tasks = await _mediator.Send(command);
@@ -51,36 +51,23 @@ namespace TaskManagement.Web.Controllers
                 {
                     Tasks = tasks
                 };
-                return View();
+                return View(vm);
             }
             else return View(model);
             
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Edit(EditTaskVM model)
+        [HttpDelete]
+        public async Task<IActionResult> Delete(string title,DateTime startTask)
         {
-            var command = new EditTaskCommand
-            {
-                Title = model.Title,
-                Describtion = model.Describtion,
-                StartDate = model.StartDate,
-                EndtDate = model.EndtDate
-            };
+            var command = new DeleteTaskCommand();
+            command.Title = title;
+            command.StartTime = startTask;
+
             var result = await _mediator.Send(command);
 
-            return View(viewName: "Index", model: result);
+            return View(viewName: "Index",model: result);
         }
-
-        //[HttpDelete]
-        //public async Task<IActionResult> Delete(EditTaskVM model)
-        //{
-        //    var command = new DeleteTaskCommand();
-            
-        //    var result = await _mediator.Send(command);
-
-        //    return View(viewName: "Index");
-        //}
 
     }
 }

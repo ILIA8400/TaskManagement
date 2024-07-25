@@ -32,19 +32,21 @@
                 </tr>
             </thead>
             <tbody id="taskTableBody">
-                @foreach (var task in Model.Tasks)
+                @if (Model.Tasks != null)
                 {
-                    <tr>
-                        <td>@task.Title</td>
-                        <td>@task.Description</td>
-                        <td>@task.StartDate</td>
-                        <td>@task.EndDate</td>
-                        <td>Pending</td>
-                        <td>
-                            <button asp-action="Edit" class="edit-btn">Edit</button>
-                            <button asp-action="Delete" class="delete-btn">Delete</button>
-                        </td>
-                    </tr>
+                    @foreach (var task in Model.Tasks)
+                    {
+                        <tr>
+                            <td>@task.Title</td>
+                            <td>@task.Description</td>
+                            <td>@task.StartDate</td>
+                            <td>@task.EndDate</td>
+                            <td>Pending</td>
+                            <td>
+                                <button type="submit" asp-action="Delete" asp-route-title="@task.Title" asp-route-startTask="@task.StartDate" ; class="delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>
